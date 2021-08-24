@@ -1,13 +1,11 @@
 import Foundation
 
-let input = readLine()!
-var T = Int(input)!
+let input = Int(readLine()!)!
 
-for i in 0 ... T{
-	let number = readLine()!
-	let lineArr = number.split(separator: " ")
-
+for i in 1 ... input{
 	
-	print("Case #\(i + 1) : \(lineArr[0] + lineArr[1])")
+	let number = readLine()!.split(separator: " ").map{Int($0)!}
+	
+	print("Case #\(i) : \(number[0] + number[1])")
 }
 	
