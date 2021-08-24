@@ -1,43 +1,58 @@
 import Swift
 
-struct Sample {
-		// 가변 프로퍼티(값 변경 가능)
+class Sample {
+		// 가변 프로퍼티
 		var mutableProperty: Int = 100
-		
-		// 불변 프로퍼티(값 변경 불가능)
+
+		// 불변 프로퍼티
 		let immutableProperty: Int = 100
 		
-		// 타입 프로퍼티(static 키워드 사용 : 타입 자체가 사용하는 프로퍼티)
+		// 타입 프로퍼티
 		static var typeProperty: Int = 100
 		
-		// 인스턴스 메서드(인스턴스가 사용하는 메서드)
+		// 인스턴스 메서드
 		func instanceMethod() {
 				print("instance method")
 		}
 		
-		// 타입 메서드(static 키워드 사용 : 타입 자체가 사용하는 메서드)
+
+		// 타입 메서드
+		// 상속시 재정의 불가 타입 메서드 - static
 		static func typeMethod() {
-				print("type method")
+				print("type method - static")
+		}
+		
+		// 상속시 재정의 가능 타입 메서드 - class
+		class func classMethod() {
+				print("type method - class")
 		}
 }
 
-// 가변 인스턴스 생성
-var mutable: Sample = Sample()
 
-mutable.mutableProperty = 200
+// 인스턴스 생성 - 참조정보 수정 가능
+var mutableReference: Sample = Sample()
+
+mutableReference.mutableProperty = 200
 
 // 불변 프로퍼티는 인스턴스 생성 후 수정할 수 없습니다
 // 컴파일 오류 발생
-//mutable.immutableProperty = 200
+//mutableReference.immutableProperty = 200
 
-// 불변 인스턴스
-let immutable: Sample = Sample()
 
-// 불변 인스턴스는 아무리 가변 프로퍼티라도
+// 인스턴스 생성 - 참조정보 수정 불가
+let immutableReference: Sample = Sample()
+
+// 클래스의 인스턴스는 참조 타입이므로 let으로 선언되었더라도 인스턴스 프로퍼티의 값 변경이 가능합니다
+immutableReference.mutableProperty = 200
+
+// 다만 참조정보를 변경할 수는 없습니다
+// 컴파일 오류 발생
+//immutableReference = mutableReference
+
+// 참조 타입이라도 불변 인스턴스는
 // 인스턴스 생성 후에 수정할 수 없습니다
 // 컴파일 오류 발생
-//immutable.mutableProperty = 200
-//immutable.immutableProperty = 200
+//immutableReference.immutableProperty = 200
 
 
 // 타입 프로퍼티 및 메서드
@@ -47,10 +62,10 @@ Sample.typeMethod() // type method
 // 인스턴스에서는 타입 프로퍼티나 타입 메서드를
 // 사용할 수 없습니다
 // 컴파일 오류 발생
-//mutable.typeProperty = 400
-//mutable.typeMethod()
+//mutableReference.typeProperty = 400
+//mutableReference.typeMethod()
 
-struct Student {
+class Student {
 	// 가변 프로퍼티
 		var name: String = "unknown"
 
@@ -58,7 +73,7 @@ struct Student {
 		var `class`: String = "Swift"
 		
 		// 타입 메서드
-		static func selfIntroduce() {
+		class func selfIntroduce() {
 				print("학생타입입니다")
 		}
 		
@@ -72,16 +87,13 @@ struct Student {
 // 타입 메서드 사용
 Student.selfIntroduce() // 학생타입입니다
 
-// 가변 인스턴스 생성
+// 인스턴스 생성
 var yagom: Student = Student()
 yagom.name = "yagom"
 yagom.class = "스위프트"
 yagom.selfIntroduce()   // 저는 스위프트반 yagom입니다
 
-// 불변 인스턴스 생성
+// 인스턴스 생성
 let jina: Student = Student()
-
-// 불변 인스턴스이므로 프로퍼티 값 변경 불가
-// 컴파일 오류 발생
-//jina.name = "jina"
-jina.selfIntroduce() // 저는 Swift반 unknown입니다
+jina.name = "jina"
+jina.selfIntroduce() // 저는 Swift반 jina입니다
