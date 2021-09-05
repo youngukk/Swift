@@ -1,4 +1,5 @@
 /* 소인수분해 */
+import Foundation
 
 var n = Int(readLine()!)!
 
