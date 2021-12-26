@@ -105,3 +105,46 @@ func randomSum(num : Int...){
 }
 
 randomSum(num: 1,2,3,2,5,1,5)
+
+// Inout
+
+var myValue = 10
+func doubleValue (value: inout Int) -> Int { // call by reference하고 싶은 매개변수의 자료형 앞에 inout 씀
+	value += value
+	return(value)
+}
+print(myValue)
+print(doubleValue(value: &myValue)) // call by reference하고 싶은 변수에 &붙여서 호출
+print(myValue)
+
+func inchesToFeet (inches : Float) -> Float {
+	return inches * 0.0833333
+}
+func inchesToYards (inches: Float) -> Float {
+	return inches * 0.0277778
+}
+
+let toFeet = inchesToFeet
+let toYards = inchesToYards
+
+// 함수를 매개편수로 활용 가능
+func outputConversion(converterFunc : (Float) -> Float, value : Float) {
+	let result = converterFunc(value)
+	print("Result = \(result)")
+}
+
+outputConversion(converterFunc: toYards, value: 10) // 야드로 변환하는 inchesToYards함수 호출
+outputConversion(converterFunc: toFeet, value: 10)	// 파투로 변환하는  inchesToFeet함수 호출
+
+
+
+func decidefunction (feet : Bool) -> (Float) -> Float {
+													// 매개변수형 	//리턴형이 함수
+	if feet {
+		return toFeet //함수를 리턴
+	} else {
+		return toYards
+	}
+}
+
+
