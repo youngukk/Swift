@@ -19,3 +19,14 @@ var kim : Man = Man(age: 10, weight: 20.5)
 kim.display()
 var lee : Man = Man(age : 1)
 lee.display()
+
+class Student : Man {
+}
+
+var kim1 : Student = Student(age: 20, weight: 65.2)
+kim1.display()
+var lee1 : Student = Student(age: 19)
+lee1.display()
+
+// 자식 클래스에 designated initializer가 없는 경우
+// 자식 클래스에 초기화가 필요한 프로퍼티가 없을 경우
