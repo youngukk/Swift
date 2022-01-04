@@ -30,3 +30,11 @@ lee1.display()
 
 // 자식 클래스에 designated initializer가 없는 경우
 // 자식 클래스에 초기화가 필요한 프로퍼티가 없을 경우
+
+protocol SomeProtocl {
+	var x : Int { get set }
+	var y : Int { get }
+	static var tx : Int { get set}
+	static func typeMethod()
+	func random() -> Double
+}
