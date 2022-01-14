@@ -50,7 +50,8 @@ rangeOfThreeItems.firstValue = 6
 
 let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
 // this range represents integer values 0, 1, 2, and 3
-rangeOfFourItems.firstValue = 6
+
+//rangeOfFourItems.firstValue = 6
 // this will report an error, even though firstValue is a variable property
 
 class DataImporter {
@@ -72,3 +73,5 @@ let manager = DataManager()
 manager.data.append("Some data")
 manager.data.append("Some more data")
 // the DataImporter instance for the importer property hasn't yet been created
+
+
